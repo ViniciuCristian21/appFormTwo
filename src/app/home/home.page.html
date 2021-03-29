@@ -1,4 +1,4 @@
-<ion-header [translucent]="true">
+<ion-header>
   <ion-toolbar>
     <ion-title>
       Blank
@@ -6,15 +6,28 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">Blank</ion-title>
-    </ion-toolbar>
-  </ion-header>
+<ion-content>
+  <form [formGroup]="form">
+    <ion-item>
+      <ion-label position="stacked">Nome</ion-label>
+      <ion-input type="text" formControlName="name"></ion-input>
+    </ion-item>
+    <!-- Validation  -->
+    <ion-item *ngIf="form.controls.name.invalid && (form.controls.name.dirty || form.controls.name.touched)" color="danger">
+      <div *ngIf="form.controls.name.errors.required">Texto obrigatorio.</div>
+      <div *ngIf="form.controls.name.errors.minlength">Prescisa ter no minimo 3 caracteres.</div>
+    </ion-item>
 
-  <div id="container">
-    <strong>Ready to create an app?</strong>
-    <p>Start with Ionic <a target="_blank" rel="noopener noreferrer" href="https://ionicframework.com/docs/components">UI Components</a></p>
-  </div>
+    <ion-item>
+      <ion-label position="stacked">E-mail</ion-label>
+      <ion-input type="email" formControlName="email"></ion-input>
+    </ion-item>
+    <!-- Validation  -->
+    <ion-item *ngIf="form.controls.email.invalid && (form.controls.email.dirty || form.controls.email.touched)" color="danger">
+      <div *ngIf="form.controls.email.errors.required">Texto obrigatorio.</div>
+      <div *ngIf="form.controls.email.errors.email">Este email nao e valido</div>
+    </ion-item>
+
+    <ion-button expand="full" fill="outline" (click)="salvar()">Salvar</ion-button>
+  </form>
 </ion-content>
