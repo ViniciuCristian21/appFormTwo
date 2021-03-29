@@ -1,7 +1,7 @@
 
 # Reactive Forms
-[x] validação
-[x] Formulario
+- [x] validação
+- [x] Formulario
 
 ## Linguagens
 - TYPESCRIPT
